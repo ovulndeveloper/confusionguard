@@ -1,0 +1,3 @@
+# Sample requirements for ConfusionGuard demos. Do not install these.
+flask==3.0.0
+reqeusts==2.31.0
