@@ -12,7 +12,7 @@ Most scanners look for known CVEs. ConfusionGuard checks the **names** — becau
 a dependency you think is `axios` but is actually `axois` is a supply-chain
 compromise waiting to happen.
 
-![ConfusionGuard demo scan](assets/demo.svg)
+![ConfusionGuard demo scan](assets/demo.png)
 
 ```bash
 python3 confusionguard.py /path/to/repo --fail-on high
@@ -53,14 +53,7 @@ credentials.
 **Dependency confusion** — publish a *public* package that has the same name as
 your *private* dependency. Depending on resolver order, the public one can win.
 
-```mermaid
-flowchart LR
-  Dev["Developer adds a dependency"] --> Resolve{"Package manager resolves the name"}
-  Resolve -->|typo| Fake["Look-alike public package"]
-  Resolve -->|private name exists publicly| Fake
-  Resolve -->|correct| Real["Expected package"]
-  Fake --> Install["Attacker code installed"]
-```
+![Typosquatting and dependency confusion](assets/attack-models.png)
 
 ConfusionGuard looks for both patterns **before** anything is installed.
 
@@ -76,7 +69,7 @@ beyond the Python standard library. Python **3.11+** (`tomllib`).
 
 ## Visual overview
 
-![ConfusionGuard pipeline](assets/how-it-works.svg)
+![ConfusionGuard pipeline](assets/how-it-works.png)
 
 1. **Parse** the manifests into `(ecosystem, name, spec)` tuples and dedupe.
 2. **Static analysis** — compare each name with a built-in popular-package
@@ -261,9 +254,10 @@ confusionguard/
 ├── sample/
 │   ├── package.json             # demo manifest (do not install)
 │   └── requirements.txt
-├── assets/
-│   ├── demo.svg                 # terminal render used above
-│   └── how-it-works.svg         # pipeline diagram
+├── assets/                      # PNG for universal rendering + SVG source
+│   ├── demo.png / demo.svg
+│   ├── how-it-works.png / how-it-works.svg
+│   └── attack-models.png / attack-models.svg
 ├── .github/workflows/tests.yml  # CI: Python 3.11, 3.12, 3.13
 ├── README.md
 └── LICENSE
