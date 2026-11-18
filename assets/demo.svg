@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="372" viewBox="0 0 1060 372" role="img" aria-label="ConfusionGuard terminal output showing a critical typosquat and a high finding">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .bar { fill: #161b22; }
+      .border { fill: none; stroke: #30363d; stroke-width: 1; }
+      .title { fill: #8b949e; font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+      .code { fill: #c9d1d9; font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+      .dim { fill: #6e7681; }
+      .crit { fill: #f85149; font-weight: 700; }
+      .high { fill: #d29922; font-weight: 700; }
+      .info { fill: #8b949e; }
+      .prompt { fill: #58a6ff; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1060" height="372" rx="12" />
+  <rect class="bar" x="0" y="0" width="1060" height="38" rx="12" />
+  <rect class="bar" x="0" y="24" width="1060" height="14" />
+  <circle cx="24" cy="19" r="6" fill="#ff5f56" />
+  <circle cx="44" cy="19" r="6" fill="#ffbd2e" />
+  <circle cx="64" cy="19" r="6" fill="#27c93f" />
+  <text class="title" x="86" y="23">confusionguard — demo scan</text>
+  <rect class="border" x="0.5" y="0.5" width="1059" height="371" rx="12" />
+
+  <g class="code" xml:space="preserve">
+    <text x="24" y="72"><tspan class="prompt">$</tspan><tspan> python3 confusionguard.py sample</tspan></text>
+    <text x="24" y="96">LEVEL    ECO   PACKAGE                     SCORE  DETAILS</text>
+    <text x="24" y="114" class="dim">--------------------------------------------------------------------------</text>
+    <text x="24" y="138"><tspan class="crit">CRITICAL</tspan><tspan> pypi  reqeusts                      100  not found in registry; resembles 'requests'</tspan></text>
+    <text x="24" y="158"><tspan class="high">HIGH    </tspan><tspan> npm   axois                          50  resembles popular package 'axios'</tspan></text>
+    <text x="24" y="178"><tspan class="info">INFO    </tspan><tspan> npm   lodash                          5  single maintainer</tspan></text>
+    <text x="24" y="198"><tspan class="info">INFO    </tspan><tspan> npm   express                         0  no risk signals</tspan></text>
+    <text x="24" y="218"><tspan class="info">INFO    </tspan><tspan> pypi  flask                           0  no risk signals</tspan></text>
+    <text x="24" y="238"><tspan class="info">INFO    </tspan><tspan> npm   jest                            0  no risk signals</tspan></text>
+    <text x="24" y="268">6 dependencies scanned — <tspan class="crit">critical=1</tspan>, <tspan class="high">high=1</tspan>, info=4</text>
+    <text x="24" y="296" class="dim"># static checks only — nothing is installed or executed</text>
+    <text x="24" y="320"><tspan class="prompt">$</tspan><tspan> python3 confusionguard.py . --fail-on high</tspan></text>
+    <text x="24" y="344" class="dim"># exit code 2 blocks CI when a high/critical finding is present</text>
+  </g>
+</svg>
